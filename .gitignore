@@ -1,0 +1,14 @@
+# Rider project files
+.idea/
+*.sln.iml
+
+# Build directories
+bin/
+obj/
+packages
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
