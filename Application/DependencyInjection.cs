@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using Application.Behaviors;
 using FluentValidation;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,9 @@ public static class DependencyInjection
             config.RegisterServicesFromAssemblies(assembly);
             config.AddOpenBehavior(typeof(ValidationPipelineBehavior<,>));
         });
+        
+        // add Logging
+        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehavior<,>));
         
         // add Fluent Validation
         services.AddValidatorsFromAssembly(assembly);

@@ -26,8 +26,7 @@ AuthSoft is a project that provides authentication functionality using JWT token
   ```json
   {
     "username": "string",
-    "password": "string",
-    "email": "string"
+    "password": "string"
   }
   ```
 - **Response**:
