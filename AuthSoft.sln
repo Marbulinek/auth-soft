@@ -12,6 +12,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{D740BF61-2F4F-4051-AC6C-7D6EACBF91BF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{49AB38B8-F1C9-4807-B459-409CF49F8FB1}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+		docker-compose.yml = docker-compose.yml
+		.dockerignore = .dockerignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{014A7B55-53D7-4B98-A7DE-8BF81BC1C97A}"
+	ProjectSection(SolutionItems) = preProject
+		postgres-config.yaml = postgres-config.yaml
+		postgres-secret.yaml = postgres-secret.yaml
+		postgres.yaml = postgres.yaml
+		webapp.yaml = webapp.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

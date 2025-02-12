@@ -6,12 +6,15 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Application.Features.Auth.Commands.Login;
 
-public class LoginUserHandler(IAuthRepository authRepository, LoginUserCommandValidator commandValidator) : IRequestHandler<LoginUserCommand, User?>
+public class LoginUserHandler(
+    IAuthRepository authRepository,
+    LoginUserCommandValidator commandValidator
+) : IRequestHandler<LoginUserCommand, User?>
 {
     public async Task<User?> Handle(LoginUserCommand request, CancellationToken cancellationToken)
     {
         await commandValidator.ValidateAndThrowAsync(request, cancellationToken: cancellationToken);
-        
+
         var user = await authRepository.FindUserByUsername(request.Username);
         if (user is null)
         {

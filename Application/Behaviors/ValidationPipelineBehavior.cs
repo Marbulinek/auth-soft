@@ -1,10 +1,13 @@
 ﻿using Domain.Entities;
 using FluentValidation;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace Application.Behaviors;
 
-public class ValidationPipelineBehavior<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators) : IPipelineBehavior<TRequest, TResponse>
+public class ValidationPipelineBehavior<TRequest, TResponse>(
+    IEnumerable<IValidator<TRequest>> validators,
+    ILogger<ValidationPipelineBehavior<TRequest, TResponse>> logger) : IPipelineBehavior<TRequest, TResponse>
 {
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
@@ -22,6 +25,7 @@ public class ValidationPipelineBehavior<TRequest, TResponse>(IEnumerable<IValida
 
         if (errors.Count != 0)
         {
+            logger.LogError("Validation errors - {Errors}", string.Join(", ", errors.Select(e => e.errorMessage)));
             throw new Exceptions.ValidationException(errors);
         }
 

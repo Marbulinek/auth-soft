@@ -1,0 +1,12 @@
+.git
+bin
+obj
+node_modules
+test*
+*.test.cs
+*.Tests.cs
+*.Tests
+*.sln
+*.csproj
+Dockerfile
+.dockerignore

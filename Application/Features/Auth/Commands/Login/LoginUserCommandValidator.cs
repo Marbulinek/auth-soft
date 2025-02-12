@@ -8,7 +8,9 @@ public class LoginUserCommandValidator : AbstractValidator<LoginUserCommand>
     {
         RuleFor(command => command.Username)
             .NotEmpty()
-            .WithMessage("Email nesmie byť prázdny!");
+            .WithMessage("Email nesmie byť prázdny!")
+            .EmailAddress()
+            .WithMessage("Email musí byť platný!");
 
         RuleFor(command => command.Password)
             .NotEmpty()

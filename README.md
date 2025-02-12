@@ -21,7 +21,7 @@ AuthSoft is a project that provides authentication functionality using JWT token
 
 - **Endpoint**: `/api/auth/register`
 - **Method**: `POST`
-- **Description**: Registers a new user.
+- **Description**: Registers a new user. Username should have email format. Password should have more than 6 chars!
 - **Request Body**:
   ```json
   {
